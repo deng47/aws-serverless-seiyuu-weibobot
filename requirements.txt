@@ -6,7 +6,7 @@ httplib2==0.11.3
 hyperlink==18.0.0
 python-dateutil==2.7.3
 python-utils==2.3.0
-requests==2.19.1
+requests>=2.20.0
 requestsexceptions==1.4.0
 rsa==3.4.2
 simplejson==3.16.0
