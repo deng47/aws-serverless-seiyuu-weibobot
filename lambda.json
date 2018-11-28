@@ -1,0 +1,9 @@
+{
+    "name": "weibo_update",
+    "description": "post seiyuu news on weibo",
+    "region": "us-west-2",
+    "handler": "dynamodb.lambda_handler",
+    "role": "arn:aws:iam::123456789012:role/service-role/mylambda",
+    "timeout": 60,
+    "memory": 128
+}
