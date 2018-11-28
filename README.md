@@ -4,3 +4,4 @@ A web crawler runs on AWS Lambda, interacts with DynamoDB, gathers Seiyuu(Japane
 Requirement:
   - AWS account
 
+Sample: weibo @自动化声豚
