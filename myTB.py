@@ -20,5 +20,9 @@ class MyTable():
 
     def get_data(self, tag, data):
         response = self.table.query(KeyConditionExpression=Key(tag).eq(data))
-        return response['Items']
+        if response['ResponseMetadata']['HTTPStatusCode'] == 200:
+            return response['Items']
+        else:
+            print(response['ResponseMetadata'])
+            return None
 

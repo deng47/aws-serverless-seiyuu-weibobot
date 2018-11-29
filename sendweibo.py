@@ -14,16 +14,20 @@ session.headers["Referer"] = Referer
 uploadurl = "https://picupload.weibo.com/interface/pic_upload.php?app=miniblog&s=json&mime=image/jpeg&data=1&wm="
 
 
-def send(tag, dic, pausetime):
+def send(tag, dic, pausetime, limit):
 
     table = MyTable("weibo")
     posts = table.get_data("source", tag)
+    if posts == None:
+        print("Failed to read data from DynamoDB")
+        return False
     if posts:
         posts = posts[0]['post']
     pre_posts = posts.copy()
 
     for each in dic:
         if each in posts:
+            print("Skip: ", each)
             continue
         message=tag+each
         piclinks = dic[each]
@@ -70,7 +74,7 @@ def send(tag, dic, pausetime):
             print('Posted: ', message)
             if len(posts) == 0:
                 posts = [each]
-            elif len(posts) > 10:
+            elif len(posts) > limit*2:
                 posts.append(each)
                 posts = posts[1:]
             else:
@@ -80,7 +84,7 @@ def send(tag, dic, pausetime):
             print('Failed: ', message)
             if len(posts) == 0:
                 posts = [each]
-            elif len(posts) > 10:
+            elif len(posts) > limit*2:
                 posts.append(each)
                 posts = posts[1:]
             else:

@@ -14,7 +14,7 @@ def updatetwitter(name, tag):
     global limit, pausetime
     try:        
         weibos=spider(name, limit)
-        send(tag, weibos, pausetime)
+        send(tag, weibos, pausetime, limit)
 
     except Exception as e:
         print(e)
@@ -25,7 +25,7 @@ def updatetumblr(name, tag):
     global limit, pausetime
     try:
         weibos=gettumblr(name, limit)
-        send(tag, weibos, pausetime)
+        send(tag, weibos, pausetime, limit)
                 
     except Exception as e:
         print(e)
@@ -36,7 +36,7 @@ def updatenews(name, tag):
     global limit, pausetime
     try:
         weibos=getnews(name, limit)
-        send(tag, weibos, pausetime)
+        send(tag, weibos, pausetime, limit)
 
     except Exception as e:
         print(e)
@@ -47,7 +47,7 @@ def updatebilibili(name, tag):
     global limit, pausetime
     try:
         weibos=getbili(name, limit)
-        send(tag, weibos, pausetime)
+        send(tag, weibos, pausetime, limit)
                 
     except Exception as e:
         print(e)
@@ -57,7 +57,7 @@ def updatebilibili(name, tag):
 def updateevent(name, tag):
     try:
         weibos=getevent(name)
-        send(tag, weibos, pausetime)
+        send(tag, weibos, pausetime, limit)
                 
     except Exception as e:
         print(e)
@@ -67,7 +67,7 @@ def updateevent(name, tag):
 
 def start():
     global limit, pausetime
-    limit=9
+    limit=7
     pausetime=0.1
 
     #更新twitter
